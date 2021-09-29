@@ -1,0 +1,16 @@
+version: '3.2'
+services:
+  web_service:
+    image: ${DOCKER_REGISTRY}:${TAG_VERSION}
+    build:
+        context: .
+        dockerfile: Dockerfile
+    volumes:
+        - type: bind
+          source: ./apache.docker.conf
+          target: /etc/apache2/sites-enabled/apache.docker.conf
+          read_only: true
+        - ../backend:/app/web_service
+        - ../frontend/build:/app/public
+    ports:
+        - '8081:8080'
