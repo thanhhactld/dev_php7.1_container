@@ -22,6 +22,7 @@ docker-compose up
 
 Config app source:
 ```xml=
+# You can overrite apache config for virtual host
 Listen 8080
 <VirtualHost *:8080>
     DocumentRoot "/app/public" # config serve static content
